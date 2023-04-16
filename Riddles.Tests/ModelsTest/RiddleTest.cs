@@ -46,5 +46,24 @@ public void CorrectAnswer_UserWins_Void()
     Assert.IsTrue(game.UserHasWon);
     Assert.IsTrue(game.IsGameOver);
 }
+
+private string currentCorrectAnswer;
+  [TestMethod]
+  public void IncorrectAnswer_UserLoses_Void()
+  {
+    //Arrange
+    RiddleGame game = new RiddleGame();
+    string riddle = game.GenerateRiddle();
+    currentCorrectAnswer = game.GetCorrectAnswer(riddle);
+    game.StartGame(currentCorrectAnswer, "wrong answer");
+
+    //Act
+    bool result = game.CheckAnswer("wrong answer");
+
+    //Assert
+    Assert.IsFalse(result);
+    Assert.IsFalse(game.UserHasWon);
+    Assert.IsTrue(game.IsGameOver);
+  }
   }
 }
