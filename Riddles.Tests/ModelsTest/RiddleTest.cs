@@ -16,5 +16,17 @@ public void GameCreation_NewRiddleGame_Void()
   //Assert
   Assert.IsNotNull(game);
 }
+  [TestMethod]
+  public void Riddle_GenerateRiddle_ReturnNonEmptyString()
+  {
+    //Arrange
+    RiddleGame game = new RiddleGame();
+
+    //Act
+    string riddle = game.GenerateRiddle();
+
+    //Assert 
+    Assert.IsFalse(string.IsNullOrEmpty(riddle));
+  }
   }
 }
